@@ -1,0 +1,119 @@
+﻿@model List<DOTNETCORE_CRUD_WEBAPI.ViewModels.Student_VM>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a href="javascript:" onclick="onCreate()">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Date Of Birth
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Blood Group
+            </th>
+            <th class="text-center">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BloodGroup)
+                </td>
+                <td class="text-center">
+                    <a href="javascript:" onclick="onEdit(@item.Id)">Edit</a> |
+                    <a href="javascript:" onclick="onDelete(@item.Id)">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div id="studentModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="onClose()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="studentForm">
+                            <div class="form-group">
+                                <label for="txtFirstName" class="control-label">First Name</label>
+                                <input id="txtFirstName" class="form-control" type="text" placeholder="Enter first name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtLastName" class="control-label"> Last Name</label>
+                                <input id="txtLastName" class="form-control" type="text" placeholder="Enter last name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateOfBirth" class="control-label">Date Of Birth</label>
+                                <input id="dateOfBirth" class="form-control" type="date" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Gender</label>
+                                <div>
+                                    <input id="rdbtnMale" type="radio" value="Male" name ="gender" checked /> Male
+                                    <input id="rdbtnFemale" type="radio" value="Female" name ="gender" /> Female
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bloodGroup" class="control-label">Blood Group</label>
+                                <select id="bloodGroup" class="form-control">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="AB">AB</option>
+                                    <option value="O">O</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="onSubmit()">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="onClose()">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/custom-script/Student.js"></script>
