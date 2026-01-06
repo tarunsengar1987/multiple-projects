@@ -1,0 +1,16 @@
+<mat-card class="padded">
+    <mat-card-content>
+
+        <div class="container">
+            <div class="row" *ngFor="let check of data.checklist">
+                <div class="col padded lightgrey">
+                    {{check.question}}
+                </div>
+                <div class="col padded" [ngClass]="{'greenbg': check.answer === 'yes', 'redbg': check.answer === 'no'}">
+                    {{check.answer}}
+                </div>
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

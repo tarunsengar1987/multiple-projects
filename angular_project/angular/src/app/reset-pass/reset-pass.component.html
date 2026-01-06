@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-content>
+    <h2>Reset Password</h2>
+    <div *ngIf="!hideField">
+      <p>Please enter your reset token:</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Token</mat-label>
+        <input matInput type="text" [formControl]="token" placeholder="Enter your reset token">
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="hideField || token.value">
+      <mat-form-field appearance="outline">
+        <mat-label>New Password</mat-label>
+        <input matInput type="password" [formControl]="password" placeholder="Enter your new password" [disabled]="isSubmitted">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" [formControl]="confirmPassword" placeholder="Confirm your new password"
+               [disabled]="isSubmitted">
+      </mat-form-field>
+    </div>
+
+    <ng-container>
+      <div class="mat-button">
+        <button mat-raised-button color="primary" (click)="resetPassword()"
+                [disabled]="!token.valid || !password.valid || !confirmPassword.valid || isSubmitted">
+          Reset Password
+        </button>
+        <div>
+          <p>{{message}}</p>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container>
+      <div class="mat-mdc-tab-links-container">
+        <a mat-button color="primary" routerLink="/home">Go to Home</a>
+      </div>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

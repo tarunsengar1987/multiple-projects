@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <input type="text" [(ngModel)]="searchText" placeholder="Search Execution Process" class="filter">
+    <mat-card>
+        <div class="progress_bar" matTooltip="Progress: {{progress}}%">
+            <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+        </div>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="workflowExpansionPanelHeader workflowExpansionPanelTitle"> Agent Name
+                </mat-panel-title>
+                <mat-panel-description class="workflowExpansionPanelHeader workflowExpansionPanelDescription">
+                    <mat-chip-set>
+                        <mat-chip class="apiColor" matTooltip="{{getbucketList}}" matTooltipClass="tooltip-html">Agent Name</mat-chip>
+                    </mat-chip-set>
+                    <mat-icon
+                        class="workflowIcon" fontIcon="expand_circle_down"></mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="exec-desc">
+                <!-- <div>
+                    <mat-label>Active Steps:</mat-label>
+                </div> -->
+                <div>
+                    <mat-label>Last Update:</mat-label>
+                </div>
+                <div>
+                    <mat-chip-set>
+                        <mat-chip matTooltip="{{getbucketList}}" class="folderColor">bucketname</mat-chip>
+                    </mat-chip-set>
+                </div>
+                <div>
+                    <mat-label>Responsible: Human / AI Agent</mat-label>
+                </div>
+            </div> 
+            <div class="update row">
+                <div class="col-8">
+                    <mat-label>Active Steps:</mat-label>
+                </div>
+                <!-- <div class="col-4">
+                    <mat-chip-set>
+                        <mat-chip matTooltip="{{getbucketList}}" class="folderColor">bucketname</mat-chip>
+                    </mat-chip-set>
+                </div> -->
+            </div>   
+        </mat-expansion-panel>
+    </mat-card>
+    
+</div>

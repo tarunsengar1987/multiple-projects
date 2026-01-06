@@ -1,0 +1,31 @@
+<div class="container files-box">
+    <div class="row">
+        <mat-label class="heading">Details For Bucket: {{bucketName}}</mat-label>
+        <div class="col">
+            <!-- File names list -->
+            <div *ngFor="let fileName of fileNamesInBucket" class="row fileList">
+                <div class="col-6 files">
+                    <mat-label class="filename" [matTooltip]="fileName">{{fileName | truncate:25:'....'}}</mat-label>
+                </div>
+                <div class="col-3">
+                    <button class="doingsPrimaryButton" mat-raised-button (click)="deleteFile(fileName)"><mat-icon>delete</mat-icon>Delete</button>
+                </div>
+                <div class="col-3">
+                    <button class="doingsAccentBlueButton" mat-raised-button><mat-icon>info</mat-icon>Details</button>
+                </div>                
+            </div>
+        </div>
+        <div class="col">
+            <!-- Upload -->
+            <app-fileupload *ngIf="bucketName != undefined" [bucketName]="bucketName"></app-fileupload>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4 class="heading">Bucket used in the following Agents:</h4>
+            <div *ngFor="let a of agents">{{a.name}}</div>
+        </div>
+    </div>
+
+</div>

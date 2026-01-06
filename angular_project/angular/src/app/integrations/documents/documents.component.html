@@ -1,0 +1,52 @@
+<h2>Document folder</h2>
+
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Create new data folder 
+        </mat-panel-title>
+        <mat-panel-description>
+            Data folder can be used by agents to complete tasks
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <!-- dynamic form -->
+    <form [formGroup]="formBucket" (ngSubmit)="onSubmitBucket()">
+        <div *ngFor="let control of formBucket.controls | keyvalue">
+            <mat-form-field appearance="outline">
+                <mat-label>{{labelsBucket[control.key]}}</mat-label>
+                <input matInput [formControlName]="control.key" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="doingsField" appearance="outline">
+                <mat-label>For customer</mat-label>
+                <mat-select formControlName="selectedItems" multiple>
+                  <mat-option *ngFor="let customer of customers" [value]="customer">{{ customer.customername }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+    
+</mat-expansion-panel>
+
+<mat-expansion-panel hideToggle expanded="true">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Manage data folder 
+        </mat-panel-title>
+        <mat-panel-description>
+            Add files to folders or delete folder and files
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div *ngFor="let b of buckets" class="row">
+        <div class="col-2 buckets">
+            <mat-label class="bucketname">{{b.bucketname}}</mat-label>
+        </div>
+        <div class="col-6">
+            <button (click)="showDetails(b.bucketname)" class="details" mat-raised-button><mat-icon>info</mat-icon>Details</button>
+        </div>       
+    </div>
+    
+</mat-expansion-panel>

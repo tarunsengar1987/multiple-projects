@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Admin Settings</h1>
+    <div class="row">
+        <div class="col">
+            <mat-card>            
+                <mat-label><mat-icon>manage_accounts</mat-icon>User management</mat-label>
+                <p>Add users to the doings platform and put them into access groups to restrict workflow usage.</p>               
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card>
+                <mat-label><mat-icon>attach_money</mat-icon>Billing / Token usage</mat-label>
+                <p>See your subscription details and token usage costs.</p>
+            </mat-card>            
+        </div>
+        <div class="col">
+            <mat-card>
+                <mat-label (click)="navLink('admin/dashboard')"><mat-icon>model_training</mat-icon>Model Deployment</mat-label>
+                <p>Deploy different AI models to the platform to use them in any workflow.</p>
+            </mat-card>            
+        </div>
+        <div class="col">
+            <mat-card>
+                <mat-label (click)="navLink('integrations/apis')"><mat-icon>monitoring</mat-icon>Data</mat-label>
+                <p>Setup data folders and API connections.</p>
+            </mat-card>            
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

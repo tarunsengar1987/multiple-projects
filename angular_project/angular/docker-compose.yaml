@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  doings:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
+    restart: always
+    ports:
+      - 8086:80
+    

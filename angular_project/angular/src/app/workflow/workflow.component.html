@@ -1,0 +1,90 @@
+<input type="text" [(ngModel)]="searchText" placeholder="Search Workflow" class="filter"> <button mat-raised-button (click)="createWorkflow()" class="doingsPrimaryButton"><mat-icon fontIcon="edit"></mat-icon>Create workflow</button>
+
+<mat-card class="doingsCard" *ngFor="let wf of workflows | filter:searchText">
+    <mat-card-header>
+        <mat-card-title>{{wf.name}}</mat-card-title> <span class="align-right"><button mat-raised-button (click)="editWorkflow(wf)" class="doingsPrimaryButton"><mat-icon fontIcon="edit"></mat-icon>Edit workflow</button> &nbsp; <button mat-raised-button (click)="wf.run(generatePromptId(wf.agents[0].prompt), stateService, router)" class="doingsPrimaryButton"><mat-icon fontIcon="play_arrow"></mat-icon>Start workflow</button></span>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="doingsDivider"></div>
+        <mat-accordion>
+            <mat-expansion-panel class="workflowExpansionPanel" *ngFor="let agent of wf.agents" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="workflowExpansionPanelHeader workflowExpansionPanelTitle"><mat-icon
+                            class="workflowIcon" fontIcon="expand_circle_down"></mat-icon> &nbsp; {{agent.name}}
+                    </mat-panel-title>
+                    <mat-panel-description class="workflowExpansionPanelHeader workflowExpansionPanelDescription">
+                        <mat-chip-set>
+                            <mat-chip (click)="goToEndpointDetails()" class="apiColor"
+                                matBadge="{{agent.api_endpoints.length - countTools(agent)}}"
+                                [matBadgeHidden]="agent.api_endpoints.length - countTools(agent) < 1">APIs</mat-chip>
+                            <mat-chip class="folderColor" matBadge="{{agent.buckets.length}}"
+                                [matBadgeHidden]="agent.buckets.length < 1">Folder</mat-chip>
+                            <mat-chip class="toolColor" matBadge="{{countTools(agent)}}"
+                                [matBadgeHidden]="countTools(agent) < 1">Tools</mat-chip>
+                        </mat-chip-set>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <!-- *ngIf="agent.buckets.length > 0"  -->
+                    <div class="chip-heading col-2"> 
+                        <h3>Folders:</h3> &nbsp;
+                        <mat-icon class="chipIconFolder" fontIcon="help" [matTooltip]="FolderTooltip"></mat-icon>
+                    </div>
+                    <div class="col-4">
+                        <button class="folderFontColor" mat-raised-button  (click)="editBuckets(agent.id, agent.name, agent.buckets)"><mat-icon class="chipIconFolder" fontIcon="edit"></mat-icon>Edit Folder</button>
+                    </div>
+                    <div>
+                        <mat-chip-set>
+                            <mat-chip class="folderColor" *ngFor="let folder of agent.buckets" (click)="bucketDetails(folder.bucketname)">{{folder.bucketname}}</mat-chip>
+                        </mat-chip-set>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <!-- *ngIf="agent.api_endpoints.length > 0" -->
+                    <div class="chip-heading col-2">
+                        <h3>Api:</h3> &nbsp;
+                        <mat-icon class="chipIconApi" fontIcon="help" [matTooltip]="ApiTooltip"></mat-icon>
+                    </div>
+                    <div class="col-4">
+                        <button class="apiFontColor" mat-raised-button (click)="editAPI(agent.id, agent.name, agent.api_endpoints)"><mat-icon class="chipIconApi" fontIcon="edit"></mat-icon>Edit Api Endpoint</button>
+                    </div>
+                    <div *ngIf="agent.api_endpoints.length > 0">
+                        <mat-chip-set>
+                            <mat-chip class="apiColor" *ngFor="let api of agent.api_endpoints">{{api.apiKey || api.name}}</mat-chip>
+                        </mat-chip-set>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="chip-heading col-2">
+                        <h3>Tools:</h3> &nbsp;
+                        <mat-icon class="chipIconTool"  fontIcon="help" [matTooltip]="ToolsTooltip"></mat-icon>
+                    </div>
+                    <div class="col-4">
+                        <button class="toolFontColor" mat-raised-button><mat-icon class="chipIconTool" fontIcon="edit"></mat-icon>Edit Tools</button>
+                    </div>
+                    <div *ngIf="countTools(agent) > 1">
+                        <mat-chip-set  *ngFor="let tool of agent.api_endpoints">
+                            <mat-chip class="toolColor" *ngIf="tool.istool">{{tool}}</mat-chip>
+                        </mat-chip-set>
+                    </div>
+                </div><br>
+                Trigger: Manual<br><br>
+                <!-- PROMPT -->
+                <mat-form-field class="responsive-form-field" appearance="outline">
+                    <mat-label>Prompt</mat-label>
+                    <textarea (focus)="originalPromptText=agent.prompt" (blur)="editPrompt(agent.id, $event)" matInput>{{agent.prompt}}</textarea>
+                </mat-form-field><br>
+
+                <mat-form-field class="responsive-form-field" appearance="outline">
+                    <mat-label>Expected output format</mat-label>
+                    <textarea (focus)="originalContextText=agent.context" (blur)="editContext(agent.id, $event)" matInput>{{agent.context}}</textarea>
+                </mat-form-field>
+
+                <br><br>
+                <!-- <button mat-raised-button (click)="editBuckets(agent.id, agent.name, agent.buckets)"><mat-icon class="chipIconFolder" fontIcon="add_circle"></mat-icon>Add Document folder</button> &nbsp;
+                <button mat-raised-button (click)="editAPI(agent.id, agent.name, agent.api_endpoints)"><mat-icon class="chipIconApi" fontIcon="add_circle"></mat-icon>Add API</button> -->
+                    
+                </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>

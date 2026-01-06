@@ -1,0 +1,22 @@
+<mat-card class="padded">
+    <mat-card-content>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2 tablehead">Name</div>
+                <div class="col-2 tablehead">Location</div>
+                <div class="col-2 tablehead">Umsatz</div>
+                <div class="col-2 tablehead">Mitarbeiter</div>
+                <div class="col-4 tablehead">Kommentar</div>
+            </div>
+            <div *ngFor="let customer of data.customers" class="row">
+                <div class="col-2">{{customer.name}}</div>
+                <div class="col-2">{{customer.country}} {{customer.city}}</div>
+                <div class="col-2">{{customer.revenue}}</div>
+                <div class="col-2">{{customer.size}}</div>
+                <div class="col-4">{{customer.event}}</div>
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

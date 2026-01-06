@@ -1,0 +1,9 @@
+<form [formGroup]="formUser" (ngSubmit)="onSubmitUser()">
+    <div *ngFor="let control of formUser.controls | keyvalue">
+        <mat-form-field appearance="outline">
+            <mat-label>{{ labels[control.key] }}</mat-label>
+            <input matInput [formControlName]="control.key"/>
+        </mat-form-field>
+    </div>
+    <button class="doingsPrimaryButton" mat-raised-button type="submit">Submit</button>
+</form>

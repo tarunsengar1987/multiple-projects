@@ -1,0 +1,71 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Create skill
+        </mat-panel-title>
+        <mat-panel-description>
+            Create a new automation skill that can be used in agent workflows
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <!-- dynamic form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div *ngFor="let control of form.controls | keyvalue">
+            <ng-container *ngIf="!keysToHide.includes(control.key)">
+                <mat-form-field class="doingsField" appearance="outline">
+                    <mat-label>{{ labels[control.key] }}</mat-label>
+                    <input matInput [formControlName]="control.key" />
+                </mat-form-field>
+            </ng-container>
+        </div>
+        <div>
+            <mat-form-field class="doingsField" appearance="outline">
+                <mat-label>Add API endpoints</mat-label>
+                <mat-select formControlName="selectedItems" multiple>
+                  <mat-option *ngFor="let endpoint of apiEndpoints" [value]="endpoint">{{ endpoint.apiurl }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <input type="hidden" formControlName="agentType">
+
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</mat-expansion-panel>
+
+<mat-expansion-panel hideToggle expanded="false">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Create agent workflows
+        </mat-panel-title>
+        <mat-panel-description>
+            Chain skills together to create an agent flow
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <!-- Workflow title -->
+    <mat-form-field appearance="outline">
+        <mat-label>Workflow name</mat-label>
+        <input matInput placeholder="Workflow one" [(ngModel)]="workflow.name">
+    </mat-form-field>
+
+    <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns" [singleAction]="'add data'" [funcList]="funcList" (selectionChange)="handleSelectionChange($event)"></app-table>
+    
+    <h1>Chosen skills</h1>
+    <app-draglist [items]="selectedAgents" (cdkDropListDropped)="orderChanged($event)"></app-draglist>
+
+</mat-expansion-panel>
+
+<mat-expansion-panel hideToggle expanded="true">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Execute agent workflows
+        </mat-panel-title>
+        <mat-panel-description>
+            
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-table [dataSource]="dataSourceWF" [displayedColumns]="displayedColumnsWF" [funcList]="funcListWF" (selectionChange)="handleSelectionChangeWF($event)"></app-table>
+
+</mat-expansion-panel>

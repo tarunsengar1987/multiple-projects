@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-content>
+    <h2>Forgot Password</h2>
+    <ng-container *ngIf="!emailSent">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [formControl]="email" placeholder="Enter your email" required>
+        <mat-error *ngIf="email.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="email.hasError('email')">Invalid email</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="forgotPassword()" [disabled]="!email.valid">Submit</button>
+      <p [class.error]="isError">{{ message }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="emailSent">
+      <div class="mat-mdc-tab-links-container">
+        <p>An email has been sent to {{ email.value }} with instructions to reset your password.
+          <br>
+          Or click <a href="/users/reset-password">here</a>, to open the password reset page directly.
+        </p>
+      </div>
+    </ng-container>
+    <ng-container>
+      <div class="mat-mdc-tab-links-container">
+        <a mat-button color="primary" routerLink="/home">Go to Home</a>
+      </div>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

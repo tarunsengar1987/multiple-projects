@@ -1,0 +1,49 @@
+mat-card{
+    margin: 1% 0%;
+}
+.folderColor{
+    background-color: rgb(174, 228, 218) !important;
+}
+mat-chip{
+    margin:0 !important;
+}
+
+mat-label{
+    font-size:18px;
+    font-weight:500;
+}
+.progress_bar{
+    cursor:pointer;
+}
+.update{
+    padding: 2% 0%;
+}
+.tooltip-html {
+    white-space: pre-line;
+}
+.apiColor{
+    background-color: rgb(197, 158, 234) !important;
+}
+.filter{
+    margin: 1% 0%;
+    width: 35%;
+    padding: 1%;
+    border-radius: 10px;
+    border: #B8B8B8;
+    outline: #b8b8b8;
+}
+.workflowIcon{
+    color: grey;
+}
+
+.workflowExpansionPanelDescription{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.exec-desc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+

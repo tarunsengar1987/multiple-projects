@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-content>
+      <!-- signup.component.html -->
+      <h2>Sign Up</h2>
+      <form (ngSubmit)="onSubmit()" id="loginform">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput type="username" [formControl]="username" placeholder="Enter your new password">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [formControl]="email" placeholder="Confirm your new password">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [formControl]="password" placeholder="Enter your password">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" [formControl]="confirmPassword" placeholder="Confirm your password">
+          </mat-form-field>
+        </div>
+        <ng-container>
+          <div class="mat-button">
+            <button mat-raised-button color="primary" style="float: right;"
+                    [disabled]="!username.valid ||!email.valid || !password.valid || !confirmPassword.valid">
+              Sign up
+            </button>
+          </div>
+          <div id="buttonGoogle"></div>
+        </ng-container>
+      </form>
+      <ng-container>
+        <div>
+          <p></p>
+          <p>{{message}}</p>
+        </div>
+      </ng-container>
+      <ng-container>
+        <div class="mat-mdc-tab-links-container">
+          <a mat-button color="primary" routerLink="/home">Go to Home</a>
+          <a mat-button color="primary" routerLink="/login">Sign in here</a>
+        </div>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+  

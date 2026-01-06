@@ -1,0 +1,23 @@
+<form (ngSubmit)="submitForm()">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div>
+                    <mat-form-field appearance="outline" class="doingsContent">
+                        <mat-label>What do you want to achieve?</mat-label>
+                        <textarea matInput name="inputs" placeholder="describe your workflow goal" [(ngModel)]="inputs" class="minHeight"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col">
+                <div *ngIf="suggestedAgents[0]" class="agentButton"><button mat-raised-button color="primary">{{suggestedAgents[0]}}</button></div>
+                <div *ngIf="suggestedAgents[1]" class="agentButton"><button mat-raised-button color="primary">{{suggestedAgents[1]}}</button></div>
+                <div *ngIf="suggestedAgents[2]" class="agentButton"><button mat-raised-button color="primary">{{suggestedAgents[2]}}</button></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="doingsContent">
+        <button mat-raised-button color="primary" (click)="submitForm()">Ok</button>
+    </div>
+</form>

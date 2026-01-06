@@ -1,0 +1,69 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; /* Optional: Set a specific height for the container */
+}
+
+.shortLabel {
+  max-width: 100px; /* Adjust the maximum width as needed */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.padded {
+  margin: 3px;
+  width: 100%;
+}
+
+.broad{
+  width: 100%
+}
+
+.eventSign{
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.doingsBold{
+  font-weight: bold;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Optional: centers the text within the element */
+}
+
+.centered-content > markdown {
+  flex-grow: 1; /* Allows the markdown content to grow and take up available space */
+}
+
+.hidden {
+  display: none;
+}
+
+.apiColor{
+  background-color: rgb(197, 158, 234) !important;
+}
+
+.folderColor{
+  background-color: rgb(174, 228, 218) !important;
+}
+
+.toolColor{
+  background-color: rgb(210, 191, 158) !important;
+}
+
+.chat{
+  height: 120px !important;
+}
+
+
+
+
+
+  

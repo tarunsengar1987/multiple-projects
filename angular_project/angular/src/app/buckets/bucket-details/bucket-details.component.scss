@@ -1,0 +1,30 @@
+.files-box{
+    background: #ffffff;
+    padding: 2% 4%;
+    border-radius: 5px;
+}
+.heading{
+    font-size:20px;
+    margin: 2% 0%;
+    border-bottom: dotted 2px grey;
+    padding-bottom: 1%;
+    font-weight:500;
+}
+.files{
+    position: relative;
+}
+.filename{
+    position:absolute;
+    top: 25%;
+    // font-weight:500 !important;
+    font-size:18px;
+    font-weight:400;
+}
+.fileList{
+    margin: 4% 0%;
+    text-align: left;
+}
+button{
+    width:100%;
+    border-radius: 10px;
+}

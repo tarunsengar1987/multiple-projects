@@ -1,0 +1,42 @@
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+body {
+  background: #FAFAFA;
+}
+
+ul {
+  list-style-type: none; 
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 5px 15px;
+}
+
+li.doingsDivider{
+  margin:10px 0;
+}
+
+.menu > li {
+  cursor: pointer;
+}
+.menu mat-icon{
+  vertical-align: middle;
+  margin: 0px 9px;
+}
+.active-link{
+  background-color: #c8c8c8;
+  border-radius: 5px;
+}
+.active-icon{
+  color:#f5f5f5
+}
+mat-drawer{
+  margin: 0px;
+  padding: 5px;
+  border-radius: 5px;
+}

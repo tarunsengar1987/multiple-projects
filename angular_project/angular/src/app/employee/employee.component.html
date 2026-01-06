@@ -1,0 +1,9 @@
+<div *ngIf="(employee$ | async) as employee">
+    {{employee.name}}<br>
+    {{employee.email}}
+</div>
+<br>
+<ng-container *ngIf="(employee$ | async) as employee">
+    <app-gantt></app-gantt>
+</ng-container>
+

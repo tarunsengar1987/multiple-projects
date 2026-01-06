@@ -1,0 +1,13 @@
+<div class="doingsCard">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div *ngFor="let control of form.controls | keyvalue">
+            <ng-container *ngIf="!keysToHide.includes(control.key)">
+                <mat-form-field class="doingsField" appearance="outline">
+                    <mat-label>{{ labels[control.key] }}</mat-label>
+                    <input matInput [formControlName]="control.key" />
+                </mat-form-field>
+            </ng-container>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</div>

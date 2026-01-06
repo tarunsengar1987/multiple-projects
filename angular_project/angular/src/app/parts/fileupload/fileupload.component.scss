@@ -1,0 +1,45 @@
+input{
+    border: solid 2px gray;
+    padding: 2%;
+    display: none;
+}
+button{
+    margin: 2% 2% 2% 0%;
+    border:none;
+    background:transparent;
+}
+.upload mat-label{
+    font-size:16px;
+}
+button.fileupload{
+    // border: solid 2px gray;
+    padding: 2%;
+    font-size: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+.fileupload mat-icon{
+    transform: rotate(-90deg);
+    height:21px !important;
+}
+.delete{
+    color:red;
+    font-size: 20px;
+}
+.delete mat-icon{
+    height: 20px;
+    color: #D97986;
+
+}
+.file-upload-container {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .file-drop-area {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

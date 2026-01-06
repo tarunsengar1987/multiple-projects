@@ -1,0 +1,14 @@
+<div>
+            <form (ngSubmit)="submitForm()">
+                <div>
+                    {{question}}
+                    <mat-form-field appearance="outline" class="doingsContent">
+                        <mat-label>Your answer:</mat-label>
+                        <textarea matInput name="inputs" placeholder="describe your workflow goal" [(ngModel)]="inputs" class="minHeight"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="doingsContent">
+                    <button type="submit" mat-raised-button color="primary">send</button>
+                </div>
+            </form>
+        </div>

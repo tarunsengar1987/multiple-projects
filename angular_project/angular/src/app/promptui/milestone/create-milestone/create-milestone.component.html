@@ -1,0 +1,9 @@
+<form [formGroup]="milestone" (ngSubmit)="onSubmit()">
+    <div *ngFor="let control of milestone.controls | keyvalue">
+        <mat-form-field appearance="outline">
+            <mat-label>{{ labelsMilestone[control.key] }}</mat-label>
+            <input matInput [formControlName]="control.key" />
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>

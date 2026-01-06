@@ -1,0 +1,52 @@
+<div class="doingsBackground">
+    <mat-toolbar class="doingsTitleBackground navShadow">
+        <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span>
+            <object type="image/svg+xml" data="assets/doings.svg" width="60" height="90">
+                Doings
+            </object>
+        </span> &nbsp; <!-- <span class="doingsText">TEST</span> -->
+        <span class="menu-spacer"></span>
+        <button *ngIf="isLoggedInReal()" mat-icon-button [matMenuTriggerFor]="account" class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <button *ngIf="!isLoggedInReal()" mat-raised-button (click)="login()" class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>login</mat-icon>LOGIN
+        </button>
+        <mat-menu #account="matMenu">
+            <!-- <button *ngIf="!isLoggedInReal()" mat-menu-item (click)="login()">login</button> -->
+            <button *ngIf="isLoggedInReal()" mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>logout</button>
+        </mat-menu>
+    </mat-toolbar>
+
+    <div>
+        <div>
+            <mat-drawer-container class="noDrawerBorder contentBackground menuminHeight">
+                <mat-drawer #drawer mode="side" class="noDrawerBorder contentBackground menuminHeight">
+                    <ul class="menu">
+                        <li [ngClass]="{'active-link': isActive('/home')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/home')}">home</mat-icon><a (click)="navLink('home')" class="btn btn-link link">Home</a><br></li>
+                        <li [ngClass]="{'active-link': isActive('/prompt')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/prompt')}">verified</mat-icon><a (click)="navLink('prompt')" class="btn btn-link link">Prompt</a><br></li>
+                        <li [ngClass]="{'active-link': isActive('/workflow')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/workflow')}">monitoring</mat-icon><a (click)="navLink('workflow')" class="btn btn-link link">Workflow</a><br></li>
+                        <li class="doingsDivider"></li>
+                        <li><mat-icon class="mat-color"></mat-icon><mat-label class="btn btn-link link doingsPrimaryFontColor">Admin</mat-label><br></li>
+                        <li [ngClass]="{'active-link': isActive('/admin/dashboard')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/admin/dashboard')}">dashboard</mat-icon><a (click)="navLink('admin/dashboard')" class="btn btn-link link">AI Endpoints</a><br></li>
+                        <li [ngClass]="{'active-link': isActive('/admin/billing')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/admin/billing')}">payments</mat-icon><a class="btn btn-link link" (click)="navLink('admin/billing')">Billing</a><br></li>
+                        <li [ngClass]="{'active-link': isActive('/admin/user')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/admin/user')}">person</mat-icon><a class="btn btn-link link" (click)="navLink('admin/user')">User</a><br></li>
+                        <li [ngClass]="{'active-link': isActive('/integrations/documents')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/integrations/documents')}">description</mat-icon><a class="btn btn-link link" (click)="navLink('integrations/documents')">Documents</a><br></li>                        
+                        <li [ngClass]="{'active-link': isActive('/integrations/apis')}"><mat-icon class="mat-color" [ngClass]="{'active-icon': isActive('/integrations/apis')}">integration_instructions</mat-icon><a class="btn btn-link link" (click)="navLink('integrations/apis')">Integrations</a><br></li>
+                    </ul>   
+                </mat-drawer>
+                
+                    <div class="contentPanel doingsBorder">
+                        <router-outlet></router-outlet>
+                    </div>
+                
+
+            </mat-drawer-container>
+        </div>
+    </div>
+</div>
+

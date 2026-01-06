@@ -1,0 +1,146 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <mat-card class="padded">
+                <mat-card-content>
+                    Quickactions
+                    <div class="spinner-container" *ngIf="showSpinner">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="padded" *ngIf="agent">
+                <mat-card-content class="broad">
+                    <form (keydown)="submitForm($event)">
+                        <mat-form-field appearance="outline" class="broad">
+                            <mat-label>Ask your assistant...</mat-label>
+                            <textarea class="chat" name="inputs" [(ngModel)]="this.inputs" matInput></textarea>
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+
+            <div [class.hidden]="!showComponent">
+                <ng-template #dynamicComponentContainer></ng-template>
+            </div>
+            
+            <div>
+                <mat-card *ngFor="let answer of allAnswers" class="padded">
+                    <mat-card-content>
+                        <div>
+                            <markdown *ngIf="answer.startsWith('mermaid'); else defaultTemplate" mermaid [mermaidOptions]="options" class="variable-binding" [data]="prepareForMermaid(answer)"></markdown>
+                            <ng-template #defaultTemplate>
+                                <markdown class="variable-binding" [data]="answer"></markdown>
+                            </ng-template>
+                            <br><br>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div class="col">
+            <!-- Agent steps (for Workflows)  -->
+            <ng-template #workflow>
+                <mat-card class="padded">
+                    <mat-card-title>&nbsp;Data flow</mat-card-title>
+                    <mat-card-content class="centered-content">
+                        <markdown mermaid [mermaidOptions]="options" [data]="mermaidGraph"></markdown>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="padded">
+                    <mat-card-content>
+                        <h3>Steps</h3>
+                        <div *ngFor="let agentEvent of agentEvents">
+                            <div class="eventSign"><span class="icon-background"><mat-icon aria-hidden="false" fontIcon="{{agentEvent.iconName}}"></mat-icon></span>&nbsp; {{agentEvent.texts[agentEvent.texts.length-1]}}</div>
+                            <!--
+                            <ng-template #aiAnswerSign>
+                                <div class="row">
+                                    <div class="col-9">
+                                        Frage: <span *ngIf="agentEvent.prompt != undefined" class="doingsBold">{{agentEvent.prompt | truncate:45}}</span><br>
+                                        {{agentEvent.texts[0] | truncate:150}}
+                                    </div>
+                                    <div class="col-3">
+                                        <button mat-raised-button (click)="rewindStep(agentEvent)">Rewind</button><br>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </ng-template>
+                            -->
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </ng-template>
+            
+            
+            <mat-card class="padded" *ngIf="agent else workflow">
+                <mat-card-content>
+                    Assistant <h2>{{agent.name}}</h2>
+
+                    <!-- FOLDER -->
+                    <div class="row">
+                        <!-- *ngIf="agent.buckets.length > 0"  -->
+                        <div class="col"> 
+                            <h3>Folders:</h3>
+                        </div>
+                        <div class="col">
+                            <button class="folderFontColor" mat-raised-button  (click)="editBuckets(agent.id, agent.name, agent.buckets)"><mat-icon class="chipIconFolder" fontIcon="edit"></mat-icon>Edit Folder</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <mat-chip-set>
+                                <mat-chip class="folderColor" *ngFor="let folder of agent.buckets" (click)="bucketDetails(folder.bucketname)">{{folder.bucketname}}</mat-chip>
+                            </mat-chip-set>
+                        </div>
+                    </div><br>
+
+                    <!-- API -->
+                    <div class="row">
+                        <!-- *ngIf="agent.buckets.length > 0"  -->
+                        <div class="col"> 
+                            <h3>APIs:</h3>
+                        </div>
+                        <div class="col">
+                            <button class="folderFontColor" mat-raised-button  (click)="editBuckets(agent.id, agent.name, agent.buckets)"><mat-icon class="chipIconFolder" fontIcon="edit"></mat-icon>Edit APIs</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div *ngIf="agent.api_endpoints.length > 0">
+                            <mat-chip-set>
+                                <mat-chip class="apiColor" *ngFor="let api of agent.api_endpoints">{{api.apiKey || api.name}}</mat-chip>
+                            </mat-chip-set>
+                        </div>
+                    </div><br>
+
+                    <!-- Tools -->
+                    <div class="row">
+                        <!-- *ngIf="agent.buckets.length > 0"  -->
+                        <div class="col"> 
+                            <h3>Tools:</h3>
+                        </div>
+                        <div class="col">
+                            <button class="folderFontColor" mat-raised-button  (click)="editBuckets(agent.id, agent.name, agent.buckets)"><mat-icon class="chipIconFolder" fontIcon="edit"></mat-icon>Edit Tools</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div *ngIf="agent.api_endpoints.length > 0">
+                            <mat-chip-set>
+                                <mat-chip class="apiColor" *ngFor="let api of agent.api_endpoints">{{api.apiKey || api.name}}</mat-chip>
+                            </mat-chip-set>
+                        </div>
+                    </div><br>
+
+
+                </mat-card-content>
+            </mat-card>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+

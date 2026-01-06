@@ -1,0 +1,62 @@
+.workflowExpansionPanelHeader{
+    font-weight: normal;
+    padding-top: 10px;
+}
+
+.workflowExpansionPanelTitle{
+    flex: 3
+}
+
+.workflowExpansionPanelDescription{
+    flex: 1
+}
+
+.chipIconApi{
+    color: rgb(165, 96, 230) !important;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.chipIconFolder{
+    color: rgb(72, 202, 178) !important;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.chipIconTool{
+    color: rgb(210, 191, 158) !important;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.apiColor{
+    background-color: rgb(197, 158, 234) !important;
+}
+
+.folderColor{
+    background-color: rgb(174, 228, 218) !important;
+}
+
+.toolColor{
+    background-color: rgb(210, 191, 158) !important;
+}
+
+.workflowExpansionPanel{
+    box-shadow: none !important;
+    border-bottom: 1px solid rgb(189, 189, 189);
+}
+
+.workflowIcon{
+    color: grey;
+}
+.filter{
+    margin: 1%;
+    width: 35%;
+    padding: 1%;
+    border-radius: 10px;
+    border: #B8B8B8;
+    outline: #b8b8b8;
+}
+.chip-heading{
+    display:flex;
+}

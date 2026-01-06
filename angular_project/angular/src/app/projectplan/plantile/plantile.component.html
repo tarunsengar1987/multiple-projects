@@ -1,0 +1,23 @@
+<!--
+
+<div class="row hasBorder">
+    <div *ngFor="let tsk of subtasks" class="col">
+        <app-plantile [task]="tsk" [tasklist]="tasklist"></app-plantile>
+    </div>
+</div>
+-->
+
+<mat-card class="tile">            
+    <mat-label class="tileLabel" [ngStyle]="{'background-color': taskColor}">
+        <mat-icon>face</mat-icon>
+        <span class="titleText">{{task.title}}</span>
+        <mat-icon class="right-icon">settings</mat-icon>
+    </mat-label>
+    <div class="description"><a href="">Details</a></div>
+    <div class="dateRange">PEP-{{task.id}}</div>               
+</mat-card>
+<div class="grid-container area">
+    <div *ngFor="let tsk of subtasks" class="grid-item">
+        <app-plantile [task]="tsk" [tasklist]="tasklist" [taskColor]="taskColor"></app-plantile>
+    </div>
+</div>

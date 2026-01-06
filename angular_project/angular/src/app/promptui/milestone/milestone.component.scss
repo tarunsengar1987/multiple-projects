@@ -1,0 +1,17 @@
+.main{
+    overflow-x: auto;
+}
+
+.scrollArea {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 2%;
+}
+.main-tile{
+    margin: 0% 1%;
+}

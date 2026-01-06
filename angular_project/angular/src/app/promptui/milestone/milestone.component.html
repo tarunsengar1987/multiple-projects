@@ -1,0 +1,14 @@
+<div class="header">
+    <h2>Grobplanung</h2>
+    <button mat-raised-button class="doingsPrimaryButton" (click)="createMilestone()"><mat-icon>add_circle</mat-icon>Create Milestone</button>
+</div>
+
+<div class="main">
+    <div class="scrollArea">
+        <ng-container *ngFor="let task of data.tasks; let i = index">
+            <ng-container  *ngIf="!isSubtask(task)">
+                    <app-plantile [tasklist]="data" [task]="task" [taskColor]="getColor(i)" class="main-tile"></app-plantile>
+            </ng-container>
+        </ng-container>        
+    </div>
+</div>

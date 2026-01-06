@@ -1,0 +1,50 @@
+.tile{
+    width: 300px;
+    display:inline-block;
+    margin: 5px;
+}
+
+.tileLabel{
+    background-color: aquamarine;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleText{
+    text-align: center;
+    color: rgb(14, 115, 81);
+}
+
+.description{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.dateRange{
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size:smaller;
+    color: gray; 
+}
+
+.hasBorder{
+    border: 2px solid #ff0000;
+}
+
+.area {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.mat-icon{
+    overflow:visible;
+}
+// .grid-item{
+
+// }
+.grid-container{
+    display:grid;
+    grid-template-columns: auto auto auto auto auto;
+}

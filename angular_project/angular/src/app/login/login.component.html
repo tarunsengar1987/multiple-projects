@@ -1,0 +1,42 @@
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<mat-card>
+
+  <mat-card-content>
+    <form>
+      <h2>Anmeldung</h2>
+      <mat-error *ngIf="hasError">Der Benutzername und das Passwort wurden nicht erkannt</mat-error>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="login" name="login" placeholder="name">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="password" name="password" placeholder="password" type="password">
+        </mat-form-field>
+      </div>
+      <ng-container>
+        <div class="mat-button">
+          <button
+            mat-flat-button
+            (click)="onLoginClick()"
+            color="primary"
+            style="float: right;"
+          >login
+          </button>
+        </div>
+      </ng-container>
+
+      <div id="buttonDiv"></div>
+
+      <div class="mat-mdc-tab-links-container">
+        <a mat-button color="primary" href="https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdocuments&access_type=offline&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin%2Fgoogle&client_id=291995627781-a4v803r4ribpm2jrk50eidpcjnd075o1.apps.googleusercontent.com">Google login</a> | <a mat-button color="primary" routerLink="/users/forgot-password">Forgot password</a>|<a mat-button color="primary" routerLink="/register">Register</a>
+      </div>
+
+    </form>
+
+  </mat-card-content>
+</mat-card>

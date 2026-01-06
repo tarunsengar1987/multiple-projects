@@ -1,0 +1,209 @@
+/* You can add global styles to this file, and also import other style files */
+@use "@worktile/gantt/styles/index.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$primaryColor: #FF896D; //ff4a64 / 950b0b
+$secondaryColor: #D02020; //71244e / f1caba
+$accentColor_purple: #a1049f;
+$accentColor_blue: #8CBEB2; //#8CBEB2 //#84c1ff
+$contentBackground: #eeeded;
+
+$primaryBackground: #de8491;
+
+$textColor: #363636;
+$lightTextColor: #b7b7b7;
+
+a {
+  color: $accentColor_purple;
+  text-decoration: none;
+}
+
+/* For mobile screens */
+@media (max-width: 767px) {
+  .responsive-form-field {
+      width: 100%;
+  }
+}
+
+/* For desktop screens */
+@media (min-width: 768px) {
+  .responsive-form-field {
+      width: 50%; /* Adjust this value as needed */
+  }
+}
+
+.align-right {
+  margin-left: auto;
+}
+
+.tablehead {
+  font-weight: bold;
+}
+
+.link {
+  color: #5d5b5b;
+  text-decoration: none;
+}
+
+.doingsPrimaryFontColor{
+  color: $primaryColor !important;
+}
+
+.centeredContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.doingsPrimaryButton{
+  background-color: $primaryColor !important;
+  color: white !important;
+}
+
+.doingsSecondaryButton{
+  background-color: $secondaryColor !important;
+  color: white !important;
+}
+
+.doingsAccentBlueButton{
+  background-color: $accentColor_blue !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.doingsAccentButton{
+  background-color: $accentColor_purple !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.doingsTitleBackground{
+  background-image: linear-gradient(to bottom right, $primaryColor, $secondaryColor);
+}
+
+.doingsBackground{
+  background-color: $contentBackground;
+}
+
+.doingsText{
+  color: $textColor;
+}
+
+.navShadow{
+  box-shadow: 5px -4px 5px 5px black;
+  margin-bottom: 9px;
+}
+
+.minHeight{
+  min-height: 10vh;
+}
+
+.menuminHeight{
+  min-height: 100vh;
+}
+
+.doingsContent{
+  //@extend .minHeight;
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1vh;
+}
+
+.doingsCard{
+  margin: 1vh;
+}
+
+.doingsDivider {
+  border-top: 2px dotted grey; /* Dotted border with grey color */
+  width: 100%;                 /* Full width */
+  margin: 10px 0;              /* Optional: Add margin for spacing */
+}
+
+.doingsPanel{
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-top: 0.5vh;
+  padding-top: 0.5vh;
+  border-style: solid;
+  border-color: #6c6c6c;
+  border-radius: 7px;
+  border-width: 1px;
+}
+
+.contentPanel{
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 3px;
+  //background-color: #ffffff;
+}
+
+.doingsBorder{
+  border-style: dashed;
+  border-width: 1px;
+  border-color: #6c6c6c;
+  border-radius: 7px;
+}
+
+.doingsField{
+  width: 75%;
+}
+
+//background only for the small area under the navbar
+.contentBackground{
+  background-color: $contentBackground;
+}
+
+.menuBackground{
+  background-color: #f5f5f5;
+}
+
+.noDrawerBorder{
+  border-right: 0px;
+}
+
+.icon-background{
+  height: 30px;
+  width: 30px;
+  background-color: $primaryBackground;
+  color: white;
+  border-radius: 50%;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+a.canvasjs-chart-credit{
+  display:none;
+}
+.mat-mdc-snack-bar-container{
+  margin-top: 20% !important;
+}
+.mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #ff4a64;
+}
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: #ffffff !important;
+}
+mat-dialog-actions .mdc-button{
+  background-color:#84c1ff;
+  margin-left:5%;
+}
+.mat-color{
+  color: #b7b7b7;
+}
+.mat-drawer-inner-container{
+  background-color: #F5F5F5;
+    border-radius: 10px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0,0.2);
+}
+
+.padded {
+  margin: 3px;
+  width: 100%;
+}
+

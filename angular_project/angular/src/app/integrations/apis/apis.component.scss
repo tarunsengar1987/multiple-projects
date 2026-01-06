@@ -1,0 +1,22 @@
+button{
+    margin: 1% 2% 1% 5%;
+    padding: 1% 6%;
+    border-radius: 10px;
+}
+.details{
+    background-color: #84c1ff !important;
+}
+.bucketname{
+    position:absolute;
+    top: 35%;
+    font-weight:500 !important;
+    font-size:18px;
+    // margin: 2% 0%;
+    font-weight:400;
+}
+.buckets{
+    position: relative;
+}
+mat-form-field{
+    width:50%;
+}

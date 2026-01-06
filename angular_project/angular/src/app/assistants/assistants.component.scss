@@ -1,0 +1,20 @@
+.padded {
+    margin: 3px;
+    width: 100%;
+    min-height: 100px !important;
+  }
+
+  .no-link {
+    text-decoration: none; /* Remove underline */
+    color: #363636; /* Use the inherited color */
+  }
+
+  .extraButton{
+    margin-bottom: 7px;
+    margin-top: 5px;
+  }
+
+  .containerButton{
+    display: grid;
+    justify-content: end;
+  }

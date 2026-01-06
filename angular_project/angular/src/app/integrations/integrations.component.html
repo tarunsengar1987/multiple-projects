@@ -1,0 +1,21 @@
+<mat-stepper [linear]="false" #stepper>
+    <mat-step>
+        <app-table [dataSource]="dataSource" [funcList]="funcList" [displayedColumns]="displayedColumns"
+            [stepper]="true" (selectionChange)="handleSelectionChange($event)"></app-table>
+    </mat-step>
+    <mat-step>
+        <h2>Configure Rest call</h2>
+        <div *ngFor="let form of forms">
+            <!-- dynamic form -->
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+                <div *ngFor="let control of form.controls | keyvalue">
+                    <mat-form-field class="doingsField" appearance="outline">
+                        <mat-label>{{ control.key }}</mat-label>
+                        <input matInput [formControl]="getFormControl(control.key,form)!" />
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </mat-step>
+</mat-stepper>

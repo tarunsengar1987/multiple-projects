@@ -1,0 +1,20 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  
+  
+  mat-form-field {
+    display: block;
+  }
+  error-message {
+    color: red;
+  }
+  .split-line {
+    width: 100%;
+    height: 1px;
+    background-color: #000; /* You can adjust the color to your preference */
+    margin: 10px 0; /* You can adjust the margin to control the space around the line */
+  }
+  

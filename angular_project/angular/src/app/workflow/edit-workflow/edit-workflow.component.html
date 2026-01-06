@@ -1,0 +1,39 @@
+<div>
+    <mat-form-field appearance="outline" class="doingsContent">
+        <mat-label>Workflow name</mat-label>
+        <input matInput [(ngModel)]="data.wf.name">
+    </mat-form-field>
+    <button class="doingsPrimaryButton" (click)="saveWorkflow(data)" mat-raised-button>Save Workflow</button>
+</div><br>
+
+<app-draglist [items]="this.agents" (cdkDropListDropped)="orderChanged($event)"></app-draglist>
+
+<div *ngIf="addAgentForm">
+    <div>
+        <h3>Add Agent</h3>
+    </div>
+    <div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div *ngFor="let control of form.controls | keyvalue">
+                <ng-container *ngIf="!keysToHide.includes(control.key)">
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{ labels[control.key] }}</mat-label>
+                        <input matInput [formControlName]="control.key" />
+                    </mat-form-field>
+                </ng-container>
+            </div>
+    
+            <input type="hidden" formControlName="agentType">
+    
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+&nbsp;<br>
+
+<button *ngIf="!addAgentForm; else closeButton" mat-raised-button (click)="addAgentForm = addAgentForm ? false : true" class="doingsPrimaryButton"><mat-icon fontIcon="edit"></mat-icon>Add Agent prompt</button>
+<button *ngIf="addAgentForm; else closeButton" mat-raised-button (click)="addAgentForm = addAgentForm ? false : true" class="doingsPrimaryButton">Close</button>
+<ng-template #closeButton>
+
+</ng-template>

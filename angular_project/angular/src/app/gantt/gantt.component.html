@@ -1,0 +1,9 @@
+<div class="test">
+    <ngx-gantt #gantt [items]="data.tasks">
+        <ngx-gantt-table height="100%">
+          <ngx-gantt-column name="doings Projektplan" width="300px">
+            <ng-template #cell let-item="item"> {{ item.title }} </ng-template>
+          </ngx-gantt-column>
+        </ngx-gantt-table>
+      </ngx-gantt>
+</div>

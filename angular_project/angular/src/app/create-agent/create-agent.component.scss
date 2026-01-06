@@ -1,0 +1,12 @@
+.example-card {
+    max-width: 400px;
+  }
+
+  .icon-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 48px; /* Assuming the icon container has a fixed width */
+    height: 48px; /* Assuming the icon container has a fixed height */
+  }
+  
