@@ -1,0 +1,35 @@
+{
+    "properties": {
+        "firstName": {
+            "type": "string",
+            "title": "First Name",
+            "description": "The first name of the person."
+        },
+        "lastName": {
+            "type": "string",
+            "title": "Last Name",
+            "description": "The last name of the person."
+        },
+        "age": {
+            "type": "number",
+            "title": "Age",
+            "description": "The age of the person."
+        },
+        "gender": {
+            "type": "string",
+            "title": "Gender",
+            "description": "The gender of the person.",
+            "enum": [
+                "male",
+                "female",
+                "neutral"
+            ]
+        },
+        "birthDate": {
+            "type": "string",
+            "format": "date",
+            "title": "Date of birth",
+            "description": "The date of birth of the person."
+        }
+    }
+}
