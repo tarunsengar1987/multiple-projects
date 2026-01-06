@@ -1,0 +1,22 @@
+﻿
+<div class="row">
+        <div class="box box-primary">
+            <div class="box-body no-padding">
+                @if (User.IsInRole(AppointmentScheduling.Utility.Helper.admin))
+                {
+                    <div class="form-group row col-2" id="divDoctorList">
+                        <label>Select Doctor</label>
+                        @Html.DropDownList("doctorId", new SelectList(ViewBag.DoctorList, "Id", "Name"), new { @class = "form-control select2", @onchange = "onDoctorChange();" })
+                    </div>
+                }
+
+                <!-- THE CALENDAR -->
+                <div id="calendar"></div>
+
+            </div><!-- /.box-body -->
+        </div><!-- /. box -->
+</div>
+
+@Html.Partial("_AddEditAppointment", ViewBag.PatientList as AppointmentScheduling.ViewModel.DoctorVM)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/script-custom-calendar.js"></script>

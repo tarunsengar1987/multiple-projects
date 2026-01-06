@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Appointments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <section class="col-md-12 col-md-push-0">
+        @Html.Partial("_CalendarPartial", ViewBag.DoctorList as AppointmentScheduling.ViewModel.DoctorVM)
+    </section>
+</div>
+
+
+

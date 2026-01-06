@@ -1,0 +1,78 @@
+﻿@model AppointmentScheduling.ViewModel.SettingsVM
+@{
+    ViewData["Title"] = "Settings";
+}
+
+<form asp-action="Settings" asp-controller="Appointment" method="post">
+
+
+    <div class="card">
+        <div class="card-header">Settings</div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="StartTime">Start Time</label>
+                        <input asp-for="StartTime" class="form-control timePicker" />
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="EndTime">End Time</label>
+                        <input asp-for="EndTime" class="form-control timePicker" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group" id="divConfirm">
+                        <label asp-for="IsAutoAcceptAppointment">Auto Accept Appointment</label>
+                        <input type="checkbox" asp-for="IsAutoAcceptAppointment">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="SendEmailNotification">Send Email Notification</label>
+                        <input type="checkbox" asp-for="SendEmailNotification">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success" id="btnSubmit">Submit</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#StartTime").kendoTimePicker({
+                dateInput: true,
+                change: onChange
+            });
+
+            $("#EndTime").kendoTimePicker({
+                dateInput: true,
+                change: onChange
+            });
+
+            function onChange() {
+                var startPicker = $("#StartTime").data("kendoTimePicker");
+                var endPicker = $("#EndTime").data("kendoTimePicker");
+
+                if (startPicker.value() > endPicker.value()) {
+                    $("#btnSubmit").prop('disabled', true);
+                    $.notify("Start time should be less than end time", "error");
+                } else {
+                    $("#btnSubmit").prop('disabled', false);
+                }
+            }
+        })
+    </script>
+}

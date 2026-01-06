@@ -1,0 +1,32 @@
+﻿@inject SignInManager<ApplicationUser> signInMangger
+@if (signInMangger.IsSignedIn(User))
+{
+
+    <a href="/Appointment/Index"><i class="fa fa-calendar home-text">&nbsp;Appointments</i></a>
+    
+    // Code not in use
+    @*@if (User.IsInRole(AppointmentScheduling.Utility.Helper.user))
+    {
+        <a href="/Appointment/Index"><i class="fa fa-calendar home-text">&nbsp;Appointments</i></a>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/Appointment/Settings"><i class="fa fa-cogs">&nbsp;</i></a>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <a href="javascript:;"><i class="fa fa-calendar home-text">&nbsp;Appointments</i></a>
+    }*@
+
+
+    @if (User.IsInRole(AppointmentScheduling.Utility.Helper.admin))
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/Appointment/List"><i class="fa fa-list">&nbsp;</i></a>
+            </li>
+        </ul>
+    }
+}

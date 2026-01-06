@@ -1,0 +1,59 @@
+﻿@model List<AppointmentScheduling.ViewModel.AppointmentsDto>
+
+@{
+    ViewData["Title"] = "List";
+}
+<style type="text/css">
+    .width15 {
+        width: 15%;
+    }
+
+    .width40 {
+        width: 40%;
+    }
+
+    .width30 {
+        width: 30%;
+    }
+
+    .width100 {
+        width: 100%;
+    }
+</style>
+<table class="table width100">
+    <thead>
+        <tr>
+            <th class="width30">
+                Title
+            </th>
+            <th class="width40">
+                Description
+            </th>
+            <th class="width15">
+                Start date time
+            </th>
+            <th class="width15">
+                Duration in Min.
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Start_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

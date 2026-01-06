@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/script-custom-calendar_old.min.js",
+    "inputFiles": [
+      "wwwroot/js/script-custom-calendar_old.js"
+    ]
+  }
+]
