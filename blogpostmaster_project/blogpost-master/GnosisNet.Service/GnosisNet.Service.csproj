@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GnosisNet.Data\GnosisNet.Data.csproj" />
+    <ProjectReference Include="..\GnosisNet.Entities\GnosisNet.Entities.csproj" />
+    <ProjectReference Include="..\GnosisNet.Repository\GnosisNet.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,38 @@
+﻿@page "/Blog/{id}"
+@using GnosisNet.Web.IServices
+@inject IBlogService _blogService
+
+@if (blog == null)
+{
+    <div class="spinner-border"></div>
+}
+else
+{
+    <div>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <b>@blog.Title</b>
+                </div>
+                <div class="card-subtitle">
+                    <span class="badge badge-secondary">Published By: @blog.PublishedBy</span>
+                    <small>Published On: @blog.PublishedDate</small>
+                </div>
+                <div class="card-body">@((MarkupString)blog.PostBody)</div>
+                <a></a>
+                <div class="card-footer">
+                    <div class="icon">
+                        <i class="fa-regular fa-comment"></i>
+                        <i class="fa-regular fa-heart" style="margin-left: 5px"></i>
+                        <i class="far fa-share-square" style="margin-left: 5px"></i>
+                        <i class="fa-regular fa-bookmark" style="margin-left: 5px"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<button class="btn btn-link" @onclick="GoBack">Back</button>
+
+
+

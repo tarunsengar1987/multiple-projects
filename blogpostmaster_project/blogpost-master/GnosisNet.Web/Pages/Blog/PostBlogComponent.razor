@@ -1,0 +1,54 @@
+﻿@page "/blog/create"
+@using GnosisNet.Web.IServices
+@using GnosisNet.Web.Models.Enums
+@inject IBlogService _blogService
+@using Microsoft.AspNetCore.Authorization
+@using Telerik.Blazor.Components
+@using Telerik.Blazor.Components.Editor
+@attribute [Authorize]
+
+<div class="col-md-6 offset-3 form-sec">
+<h3>Share your thoughts/news etc..</h3>
+
+@if (errorMessage != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @errorMessage
+    </div>
+}
+<EditForm Model="@blog" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" @bind="blog.Title" />
+        <ValidationMessage For="@(() => blog.Title)" />
+    </div>
+    <div class="form-group">
+        <label for="postbody">Post Body</label>
+        <TelerikEditor @bind-Value="@blog.PostBody"
+                       Tools="@Tools"
+                       Height="450px">
+        </TelerikEditor>
+        <ValidationMessage For="@(() => blog.PostBody)" />
+    </div>
+    <div class="form-group">
+        <label for="publisheddate">Published Date</label>
+        <input type="date" class="form-control" id="publisheddate" @bind="blog.PublishedDate" />
+        @* <BlazoredDatePicker @bind-Value="@blog.PublishedDate"></BlazoredDatePicker> *@
+            @* <TelerikDatePicker @bind-Value="blog.PublishedDate"
+                               Format="dd MMMM yyyy">
+            </TelerikDatePicker> *@
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" @bind="blog.Status">
+            @foreach (var status in Enum.GetValues(typeof(BlogStatusEnum)))
+            {
+                <option value="@status">@status</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <button class="btn btn-link" @onclick="GoBack">Back</button>
+</EditForm>
+</div>
